@@ -1,0 +1,147 @@
+
+		Sat Oct 21 2023
+14:10:08 OpenLink Virtuoso Universal Server
+14:10:08 Version 07.20.3237-pthreads for Linux as of Jul 12 2023 (000000)
+14:10:08 uses OpenSSL 3.0.2 15 Mar 2022
+14:10:08 uses parts of PCRE, Html Tidy
+14:10:08 SQL Optimizer enabled (max 1000 layouts)
+14:10:08 Compiler unit is timed at 0.000217 msec
+14:10:09 Checkpoint started
+14:10:09 Checkpoint finished.
+14:10:09 Roll forward started
+14:10:09 Roll forward complete
+14:10:09 PL LOG: Installing Virtuoso Conductor version 1.00.8849 (DAV)
+14:10:09 PL LOG: Installing with dependencies Virtuoso Conductor version 1.00.8849/2023-07-12 15:11 (DAV)
+14:10:09 Checkpoint started
+14:10:09 Checkpoint finished, log reused
+14:10:12 Checkpoint started
+14:10:12 Checkpoint finished, log reused
+14:10:12 PL LOG: Installation with dependencies complete
+14:10:12 Checkpoint started
+14:10:12 Checkpoint finished, log reused
+14:10:13 HTTP/WebDAV server online at 27015
+14:10:13 Server online at 1111 (pid 19)
+14:10:13 Server received signal 15
+14:10:13 Initiating quick shutdown
+14:10:13 Server shutdown complete
+
+		Sat Oct 21 2023
+14:10:13 OpenLink Virtuoso Universal Server
+14:10:13 Version 07.20.3237-pthreads for Linux as of Jul 12 2023 (000000)
+14:10:13 uses OpenSSL 3.0.2 15 Mar 2022
+14:10:13 uses parts of PCRE, Html Tidy
+14:10:13 Database version 3126
+14:10:13 SQL Optimizer enabled (max 1000 layouts)
+14:10:14 Compiler unit is timed at 0.000092 msec
+14:10:14 Roll forward started
+14:10:14     8 transactions, 1957 bytes replayed (100 %)
+14:10:14 Roll forward complete
+14:10:14 Checkpoint started
+14:10:14 Checkpoint finished, log reused
+14:10:14 HTTP/WebDAV server online at 27015
+14:10:14 Server online at 1111 (pid 48)
+14:10:14 Checkpoint started
+14:10:14 Checkpoint finished, log reused
+14:10:14 Server shutdown complete
+
+		Sat Oct 21 2023
+14:10:14 OpenLink Virtuoso Universal Server
+14:10:14 Version 07.20.3237-pthreads for Linux as of Jul 12 2023 (000000)
+14:10:14 uses OpenSSL 3.0.2 15 Mar 2022
+14:10:14 uses parts of PCRE, Html Tidy
+14:10:14 Database version 3126
+14:10:14 SQL Optimizer enabled (max 1000 layouts)
+14:10:15 Compiler unit is timed at 0.000092 msec
+14:10:16 Roll forward started
+14:10:16 Roll forward complete
+14:10:16 Checkpoint started
+14:10:16 Checkpoint finished, log reused
+14:10:16 HTTP/WebDAV server online at 8890
+14:10:16 Server online at 1111 (pid 1)
+14:20:17 WARN_0 01V01 QW004 Incompatible types VARCHAR (182) and INTEGER (189) in COALESCE for coalesce_ret and <constant>
+14:20:17 WARN_0 01V01 QW004 Incompatible types VARCHAR (182) and INTEGER (189) in := for coalesce_ret and <constant>
+14:20:17 WARN_0 01V01 QW004 Incompatible types VARCHAR (182) and INTEGER (189) in COALESCE for coalesce_ret and <constant>
+14:20:17 WARN_0 01V01 QW004 Incompatible types VARCHAR (182) and INTEGER (189) in := for coalesce_ret and <constant>
+14:24:47 Server received signal 15
+14:24:47 Initiating quick shutdown
+14:24:47 Server shutdown complete
+
+		Sat Oct 21 2023
+14:25:17 OpenLink Virtuoso Universal Server
+14:25:17 Version 07.20.3237-pthreads for Linux as of Jul 12 2023 (000000)
+14:25:17 uses OpenSSL 3.0.2 15 Mar 2022
+14:25:17 uses parts of PCRE, Html Tidy
+14:25:17 Database version 3126
+14:25:17 SQL Optimizer enabled (max 1000 layouts)
+14:25:18 Compiler unit is timed at 0.000083 msec
+14:25:19 Roll forward started
+14:25:19     32 transactions, 36802 bytes replayed (100 %)
+14:25:19 Roll forward complete
+14:25:19 Checkpoint started
+14:25:19 Checkpoint finished, log reused
+14:25:19 HTTP/WebDAV server online at 27015
+14:25:19 Server online at 1111 (pid 18)
+14:25:19 Checkpoint started
+14:25:19 Checkpoint finished, log reused
+14:25:19 Server shutdown complete
+
+		Sat Oct 21 2023
+14:25:19 OpenLink Virtuoso Universal Server
+14:25:19 Version 07.20.3237-pthreads for Linux as of Jul 12 2023 (000000)
+14:25:19 uses OpenSSL 3.0.2 15 Mar 2022
+14:25:19 uses parts of PCRE, Html Tidy
+14:25:19 Database version 3126
+14:25:19 SQL Optimizer enabled (max 1000 layouts)
+14:25:20 Compiler unit is timed at 0.000069 msec
+14:25:20 Roll forward started
+14:25:20 Roll forward complete
+14:25:21 Checkpoint started
+14:25:21 Checkpoint finished, log reused
+14:25:21 HTTP/WebDAV server online at 8890
+14:25:21 Server online at 1111 (pid 1)
+14:31:57 ERRS_0 42001 XPQ?? Incorrect year delimiter in date constructor: "A colorful painting of a summer morning"
+14:31:57 ERRS_0 42001 XPQ?? Incorrect year delimiter in date constructor: "A colorful painting of a summer morning"
+15:19:40 ERRS_0 42001 XPQ?? Incorrect year delimiter in date constructor: "A colorful painting of a summer morning"
+15:19:40 ERRS_0 42001 XPQ?? Incorrect year delimiter in date constructor: "A colorful painting of a summer morning"
+15:25:21 Checkpoint started
+15:25:21 Checkpoint finished, log reused
+15:27:11 Server received signal 15
+15:27:11 Initiating quick shutdown
+15:27:11 Server shutdown complete
+
+		Sat Oct 21 2023
+15:28:07 OpenLink Virtuoso Universal Server
+15:28:07 Version 07.20.3237-pthreads for Linux as of Jul 12 2023 (000000)
+15:28:07 uses OpenSSL 3.0.2 15 Mar 2022
+15:28:07 uses parts of PCRE, Html Tidy
+15:28:07 Database version 3126
+15:28:07 SQL Optimizer enabled (max 1000 layouts)
+15:28:08 Compiler unit is timed at 0.000082 msec
+15:28:09 Roll forward started
+15:28:09     16 transactions, 1667 bytes replayed (100 %)
+15:28:09 Roll forward complete
+15:28:09 Checkpoint started
+15:28:09 Checkpoint finished, log reused
+15:28:09 HTTP/WebDAV server online at 27015
+15:28:09 Server online at 1111 (pid 18)
+15:28:09 Checkpoint started
+15:28:09 Checkpoint finished, log reused
+15:28:09 Server shutdown complete
+
+		Sat Oct 21 2023
+15:28:09 OpenLink Virtuoso Universal Server
+15:28:09 Version 07.20.3237-pthreads for Linux as of Jul 12 2023 (000000)
+15:28:09 uses OpenSSL 3.0.2 15 Mar 2022
+15:28:09 uses parts of PCRE, Html Tidy
+15:28:09 Database version 3126
+15:28:09 SQL Optimizer enabled (max 1000 layouts)
+15:28:10 Compiler unit is timed at 0.000070 msec
+15:28:10 Roll forward started
+15:28:10 Roll forward complete
+15:28:10 Checkpoint started
+15:28:10 Checkpoint finished, log reused
+15:28:10 HTTP/WebDAV server online at 8890
+15:28:10 Server online at 1111 (pid 1)
+15:39:30 Server received signal 15
+15:39:30 Initiating quick shutdown
+15:39:30 Server shutdown complete
