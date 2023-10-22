@@ -7,22 +7,61 @@ export default class CreateArtworkController extends Controller {
     @tracked newTitle = '';
     @tracked newArtType = '';
     @tracked newDescription = '';
+    @tracked newArtistName = '';
 
     @service store;
 
     @action
-    createArtwork(event) {
+    async createArtwork(event) {
       event.preventDefault();
-      // create the new artwork
-      const artwork = this.store.createRecord('artwork', {
+
+      const artist = this.store.createRecord('artist', {
+        name: this.newArtistName,
+      });
+
+      artist.get('artworks').createRecord({
         title: this.newTitle,
         artType: this.newArtType,
         description: this.newDescription,
       });
-      artwork.save();
+
+      artist.save();
+
+      /* const artist = this.store.createRecord('artist', {
+        name: this.newArtistName,
+      });
+      await artist.save();
+
+      const artwork = this.store.createRecord('artwork', {
+        title: this.newTitle,
+        artType: this.newArtType,
+        description: this.newDescription,
+        artist: artist,
+      });
+      artwork.save(); */
+
+      /* artist.get('artworks').then(function() {
+        artist.get('artworks').addObject(this.store.createRecord('artwork', {
+            title: this.newTitle,
+            artType: this.newArtType,
+            description: this.newDescription,
+          }));
+      }); */
+
+      
+
+      // create the new artwork
+      /* const artwork = this.store.createRecord('artwork', {
+        title: this.newTitle,
+        artType: this.newArtType,
+        description: this.newDescription,
+        artist: artist,
+      });
+      artwork.save(); */
       // clear the input fields
       this.newTitle = '';
       this.newArtType = '';
       this.newDescription = '';
+      this.newArtistName = '';
     }
 }
