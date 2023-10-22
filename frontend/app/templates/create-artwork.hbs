@@ -1,0 +1,45 @@
+{{!-- <form {{on "submit" this.createArtwork}} >
+  <dl>
+    <dt>Artwork title</dt>
+    <dd>
+       <Input @value={{this.newTitle}}
+              placeholder="In June" />
+    </dd>
+    <dt>Type</dt>
+    <dd>
+      <Input @value={{this.newArtType}}
+             placeholder="Painting" />
+    </dd>
+    <dd>
+      <Input @value={{this.newDescription}}
+             placeholder="A wonderful depiction of June" />
+    </dd>
+  </dl>
+  <button type="submit">Create</button>
+</form> --}}
+
+<form {{on "submit" this.createArtwork}}>
+  <div class="rentals">
+    <label for="art-title">Title</label>
+    <Input @value={{this.newTitle}} id="art-title" class="light" />
+    {{#if this.titleError}}
+      <span>{{this.titleError}}</span>
+    {{/if}}
+  </div>
+  <div class="rentals">
+    <label for="art-type">Type</label>
+    <Input @value={{this.newArtType}} id="art-type" class="light" />
+    {{#if this.artTypeError}}
+      <span>{{this.artTypeError}}</span>
+    {{/if}}
+  </div>
+  <div class="rentals">
+    <label for="description">Description</label>
+    <Input @value={{this.newDescription}} id="description" class="light" />
+    {{#if this.descriptionError}}
+      <span>{{this.descriptionError}}</span>
+    {{/if}}
+  </div>
+
+    <button type="submit" class="button">Create</button>
+</form>
