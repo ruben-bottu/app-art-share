@@ -1,0 +1,5 @@
+<ul class="results">
+  {{#each @artworks as |artwork|}}
+    <li><Artwork @artwork={{artwork}} @artist={{artwork.artist}} /></li>
+  {{/each}}
+</ul>

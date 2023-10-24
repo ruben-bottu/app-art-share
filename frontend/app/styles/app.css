@@ -462,13 +462,9 @@ p {
 }
 
 .tomster {
-  background: url("images/teaching-tomster.png");
-  background-size: contain;
-  background-repeat: no-repeat;
   height: 200px;
   width: 200px;
   position: relative;
-  top: -25px;
 }
 
 .screen-reader {

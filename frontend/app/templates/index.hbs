@@ -1,11 +1,7 @@
 <Jumbo>
   <h2>Welcome to Art Share!</h2>
   <p>Experience the art of your friends and family, and if you're feeling creative, feel free to share your own!</p>
-  <LinkTo @route="createArtwork" class="button">Create</LinkTo>
+  <LinkTo @route="artworks.new" class="button">Create</LinkTo>
 </Jumbo>
 
-<ul class="results">
-  {{#each @model as |artwork|}}
-    <li><Artwork @artwork={{artwork}} @artist={{artwork.artist}} /></li>
-  {{/each}}
-</ul>
+<ArtworkOverview @artworks={{@model}} />
