@@ -5,5 +5,5 @@ export default class ArtworkModel extends Model {
   @attr('string') artType;
   @attr('string') description;
   @attr('string') imageUrl;
-  @belongsTo('artist') artist;
+  @belongsTo('artist', { async: true, inverse: 'artworks' }) artist;
 }

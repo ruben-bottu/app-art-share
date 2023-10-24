@@ -7,4 +7,10 @@ export default class IndexRoute extends Route {
     model() {
         return this.store.findAll('artwork');
     }
+
+    /* model() {
+        return this.store.query('artwork', {
+            include: 'artist'
+        });
+    } */
 }

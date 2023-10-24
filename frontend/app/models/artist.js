@@ -4,5 +4,5 @@ export default class ArtistModel extends Model {
   @attr('string') name;
   @attr('string') givenName;
   @attr('string') familyName;
-  @hasMany('artwork') artworks;
+  @hasMany('artwork', { async: true, inverse: 'artist' }) artworks;
 }

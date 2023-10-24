@@ -12,7 +12,7 @@
                 (:description :string ,(s-prefix "schema:abstract"))
                 (:image-url :string ,(s-prefix "schema:image")))
   :has-one `((artist :via ,(s-prefix "schema:artist")
-              :as :artist))
+              :as "artist"))
   :resource-base (s-url "https://github.com/ruben-bottu/artwork-service/artworks/")
   :on-path "artworks")
 
@@ -21,7 +21,7 @@
   :properties `((:name :string ,(s-prefix "schema:name"))
                 (:given-name :string ,(s-prefix "foaf:givenName"))
                 (:family-name :string ,(s-prefix "foaf:familyName")))
-  :has-many `((artwork :via  (s-prefix "schema:artist")
+  :has-many `((artwork :via ,(s-prefix "schema:artist")
                :inverse t
                :as "artworks"))
   :resource-base (s-url "https://github.com/ruben-bottu/artist-service/artists/")

@@ -6,6 +6,6 @@
 
 <ul class="results">
   {{#each @model as |artwork|}}
-    <li><Artwork @artwork={{artwork}} /></li>
+    <li><Artwork @artwork={{artwork}} @artist={{artwork.artist}} /></li>
   {{/each}}
 </ul>

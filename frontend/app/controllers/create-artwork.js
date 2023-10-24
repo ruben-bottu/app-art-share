@@ -19,17 +19,6 @@ export default class CreateArtworkController extends Controller {
         name: this.newArtistName,
       });
 
-      artist.get('artworks').createRecord({
-        title: this.newTitle,
-        artType: this.newArtType,
-        description: this.newDescription,
-      });
-
-      artist.save();
-
-      /* const artist = this.store.createRecord('artist', {
-        name: this.newArtistName,
-      });
       await artist.save();
 
       const artwork = this.store.createRecord('artwork', {
@@ -38,26 +27,9 @@ export default class CreateArtworkController extends Controller {
         description: this.newDescription,
         artist: artist,
       });
-      artwork.save(); */
 
-      /* artist.get('artworks').then(function() {
-        artist.get('artworks').addObject(this.store.createRecord('artwork', {
-            title: this.newTitle,
-            artType: this.newArtType,
-            description: this.newDescription,
-          }));
-      }); */
+      artwork.save();
 
-      
-
-      // create the new artwork
-      /* const artwork = this.store.createRecord('artwork', {
-        title: this.newTitle,
-        artType: this.newArtType,
-        description: this.newDescription,
-        artist: artist,
-      });
-      artwork.save(); */
       // clear the input fields
       this.newTitle = '';
       this.newArtType = '';

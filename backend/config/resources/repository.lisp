@@ -2,7 +2,7 @@
 
 (add-prefix "dcterms" "http://purl.org/dc/terms/")
 (add-prefix "schema" "http://schema.org/")
-;; TODO (add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
+(add-prefix "foaf" "http://xmlns.com/foaf/0.1/")
 
 ;;;;
 ;; NOTE
