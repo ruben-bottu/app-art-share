@@ -1,28 +1,32 @@
+{{#if this.statusMessage}}
+  <section class="status-bar"><span>{{this.statusMessage}}</span></section>
+{{/if}}
+
 <form {{on "submit" this.createArtwork}}>
   <div class="rentals">
     <label for="art-title">Title</label>
-    <Input @value={{this.newTitle}} id="art-title" class="light" />
+    <Input @value={{this.title}} id="art-title" class="light" />
     {{#if this.titleError}}
       <span>{{this.titleError}}</span>
     {{/if}}
   </div>
   <div class="rentals">
     <label for="artist">Artist</label>
-    <Input @value={{this.newArtistName}} id="artist" class="light" />
-    {{#if this.artistError}}
-      <span>{{this.artistError}}</span>
+    <Input @value={{this.artistName}} id="artist" class="light" />
+    {{#if this.artistNameError}}
+      <span>{{this.artistNameError}}</span>
     {{/if}}
   </div>
   <div class="rentals">
-    <label for="art-type">Type</label>
-    <Input @value={{this.newArtType}} id="art-type" class="light" />
+    <label for="art-type">Art Form</label>
+    <Input @value={{this.artType}} id="art-type" class="light" />
     {{#if this.artTypeError}}
       <span>{{this.artTypeError}}</span>
     {{/if}}
   </div>
   <div class="rentals">
     <label for="description">Description</label>
-    <Input @value={{this.newDescription}} id="description" class="light" />
+    <Input @value={{this.description}} id="description" class="light" />
     {{#if this.descriptionError}}
       <span>{{this.descriptionError}}</span>
     {{/if}}
