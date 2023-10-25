@@ -18,10 +18,10 @@
     {{/if}}
   </div>
   <div class="rentals">
-    <label for="art-type">Art Form</label>
-    <Input @value={{this.artType}} id="art-type" class="light" />
-    {{#if this.artTypeError}}
-      <span>{{this.artTypeError}}</span>
+    <label for="art-form">Art Form</label>
+    <Input @value={{this.artForm}} id="art-form" class="light" />
+    {{#if this.artFormError}}
+      <span>{{this.artFormError}}</span>
     {{/if}}
   </div>
   <div class="rentals">
@@ -32,5 +32,5 @@
     {{/if}}
   </div>
 
-    <button type="submit" class="button">Create</button>
+  <button type="submit" class="button">Create</button>
 </form>

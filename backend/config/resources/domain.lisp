@@ -8,7 +8,7 @@
 (define-resource artwork ()
   :class (s-prefix "schema:VisualArtwork")
   :properties `((:title :string ,(s-prefix "schema:headline"))
-                (:art-type :string ,(s-prefix "schema:artform"))
+                (:art-form :string ,(s-prefix "schema:artform"))
                 (:description :string ,(s-prefix "schema:abstract"))
                 (:image-url :string ,(s-prefix "schema:image")))
   :has-one `((artist :via ,(s-prefix "schema:artist")

@@ -8,13 +8,13 @@ const allowedTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/webp'];
 export default class ArtworksNewController extends Controller {
   @tracked title = '';
   @tracked artistName = '';
-  @tracked artType = '';
+  @tracked artForm = '';
   @tracked description = '';
 
   @tracked statusMessage = '';
   @tracked titleError = '';
   @tracked artistNameError = '';
-  @tracked artTypeError = '';
+  @tracked artFormError = '';
   @tracked descriptionError = '';
   @tracked dropzoneError = '';
 
@@ -22,44 +22,95 @@ export default class ArtworksNewController extends Controller {
   @tracked preview = '';
 
   @service store;
+  @service router;
 
+  // still needed for clearing statusMessage and dropzoneError
   clearErrors() {
     this.statusMessage = '';
     this.titleError = '';
     this.artistNameError = '';
-    this.artTypeError = '';
+    this.artFormError = '';
     this.descriptionError = '';
     this.dropzoneError = '';
+  }
+
+  clearInputFields() {
+    this.title = '';
+    this.artistName = '';
+    this.artForm = '';
+    this.description = '';
   }
 
   isValidTextInput(text) {
     return text && text.trim() !== '';
   }
 
-  validate() {
+  /* validate() {
     let result = true;
 
-    if (!this.title || this.title.trim() === '') {
-      this.titleError = `Title required`;
+    if (!this.isValidTextInput(this.title)) {
+      this.titleError = `Title is required`;
       result = false;
     }
 
-    if (!this.artistName || this.artistName.trim() === '') {
+    if (!this.isValidTextInput(this.artistName)) {
       this.artistNameError = `Artist name is required`;
       result = false;
     }
 
-    if (!this.artType || this.artType.trim() === '') {
-      this.artTypeError = `Artform is required`;
+    if (!this.isValidTextInput(this.artForm)) {
+      this.artFormError = `Art form is required`;
       result = false;
     }
 
-    if (!this.description || this.description.trim() === '') {
+    if (!this.isValidTextInput(this.description)) {
       this.descriptionError = `Description is required`;
       result = false;
     }
 
     return result;
+  } */
+
+  validate() {
+    const fields = [
+      {
+        fieldName: 'title',
+        isFieldValid: this.isValidTextInput,
+        errorMessage: `Title is required`,
+      },
+      {
+        fieldName: 'artistName',
+        isFieldValid: this.isValidTextInput,
+        errorMessage: `Artist name is required`,
+      },
+      {
+        fieldName: 'artForm',
+        isFieldValid: this.isValidTextInput,
+        errorMessage: `Art form is required`,
+      },
+      {
+        fieldName: 'description',
+        isFieldValid: this.isValidTextInput,
+        errorMessage: `Description is required`,
+      },
+    ];
+
+    const isFormValid = fields.reduce((acc, currentField) => {
+      const fieldName = currentField.fieldName;
+      /* if (!this.hasOwnProperty(fieldName))
+        throw Error(`Field ${fieldName} does not exist`); */
+      const errorFieldName = `${fieldName}Error`;
+
+      if (currentField.isFieldValid(this[fieldName])) {
+        this[errorFieldName] = '';
+        return acc;
+      } else {
+        this[errorFieldName] = currentField.errorMessage;
+        return false;
+      }
+    }, true);
+
+    return isFormValid;
   }
 
   @action
@@ -78,12 +129,14 @@ export default class ArtworksNewController extends Controller {
 
     const artwork = this.store.createRecord('artwork', {
       title: this.title,
-      artType: this.artType,
+      artForm: this.artForm,
       description: this.description,
       artist: artist,
     });
     artwork.save();
 
-    this.statusMessage = `Creation successful`;
+    this.clearInputFields();
+    //this.statusMessage = `Creation successful`;
+    this.router.transitionTo('index');
   }
 }
