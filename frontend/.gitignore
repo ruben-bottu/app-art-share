@@ -1,5 +1,10 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
+# IDE
+.idea
+.vscode
+.editorconfig
+
 # compiled output
 /dist/
 /tmp/
@@ -9,7 +14,6 @@
 /node_modules/
 
 # misc
-.idea
 /.env*
 /.pnp*
 /.sass-cache
@@ -22,7 +26,6 @@
 /yarn-error.log
 
 # ember-try
-
 *~
 .DS_Store
 /.node_modules.ember-try/
@@ -38,3 +41,5 @@
 /DEBUG/
 
 /ssl/
+
+.history
