@@ -2,7 +2,7 @@
   <section class="status-bar"><span>{{this.statusMessage}}</span></section>
 {{/if}}
 
-<form {{on "submit" this.createArtwork}}>
+<form {{on "submit" this.handleCreateArtwork}}>
   <div class="rentals">
     <label for="art-title">Title</label>
     <Input @value={{this.title}} id="art-title" class="light" />
@@ -31,6 +31,37 @@
       <span>{{this.descriptionError}}</span>
     {{/if}}
   </div>
+
+  {{#let (file-queue name="artImages" onFileAdded=this.setArtImage) as |queue|}}
+    <FileDropzone
+      class="dropzone"
+      @filter={{this.validateFile}}
+      @queue={{queue}}
+      as |dropzone|
+    >
+      {{#if dropzone.active}}
+        Drop to upload
+      {{else if this.preview}}
+        <img src={{this.preview}} alt="Preview of image" />
+      {{else if dropzone.supported}}
+        <div>
+          <label for="file-upload">
+            Upload a file
+          </label>
+          <input
+            id="file-upload"
+            type="file"
+            {{queue.selectFile filter=this.validateFile}}
+          />
+          <p>or drag and drop</p>
+        </div>
+        <p class="file-constraints">JPG, PNG, WEBP, GIF up to 10 MB</p>
+        {{#if this.dropzoneError}}
+          <span style="color: red">{{this.dropzoneError}}</span>
+        {{/if}}
+      {{/if}}
+    </FileDropzone>
+  {{/let}}
 
   <button type="submit" class="button">Create</button>
 </form>

@@ -538,10 +538,10 @@ input[type="file"] {
 
 .dropzone {
   font-size: 140%;
-  padding: 50px 0;
+  padding: 20px 0;
   margin-bottom: 50px;
-  border: dashed 5px #fff;
-  border-radius: 10px;
+  border: dashed 5px lightgray;
+  border-radius: 30px;
   text-align: center;
   height: 200px;
   display: flex;
@@ -567,7 +567,7 @@ input[type="file"] {
 }
 
 .dropzone img {
-  top: 0;
-  right: 0;
+  max-width: 100%;
+  max-height: 100%;
   page-break-before: always; /* CSS 2.1 syntax */
 }

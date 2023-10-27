@@ -11,6 +11,9 @@ export default class ArtworksNewController extends Controller {
   @tracked artForm = '';
   @tracked description = '';
 
+  @tracked artImage = '';
+  @tracked preview = '';
+
   @tracked statusMessage = '';
   @tracked titleError = '';
   @tracked artistNameError = '';
@@ -18,20 +21,17 @@ export default class ArtworksNewController extends Controller {
   @tracked descriptionError = '';
   @tracked dropzoneError = '';
 
-  @tracked artImage = '';
-  @tracked preview = '';
-
   @service store;
   @service router;
+  @service fileQueue;
 
-  // still needed for clearing statusMessage and dropzoneError
   clearErrors() {
     this.statusMessage = '';
-    this.titleError = '';
+    /* this.titleError = '';
     this.artistNameError = '';
     this.artFormError = '';
     this.descriptionError = '';
-    this.dropzoneError = '';
+    this.dropzoneError = ''; */
   }
 
   clearInputFields() {
@@ -39,104 +39,126 @@ export default class ArtworksNewController extends Controller {
     this.artistName = '';
     this.artForm = '';
     this.description = '';
+    this.artImage = '';
+    this.preview = '';
   }
 
   isValidTextInput(text) {
     return text && text.trim() !== '';
   }
 
-  /* validate() {
-    let result = true;
+  isFormValid(fields) {
+    return fields.reduce((acc, currentField) => {
+      if (!currentField.errorMessage)
+        throw Error('errorMessage cannot be empty');
 
-    if (!this.isValidTextInput(this.title)) {
-      this.titleError = `Title is required`;
-      result = false;
-    }
-
-    if (!this.isValidTextInput(this.artistName)) {
-      this.artistNameError = `Artist name is required`;
-      result = false;
-    }
-
-    if (!this.isValidTextInput(this.artForm)) {
-      this.artFormError = `Art form is required`;
-      result = false;
-    }
-
-    if (!this.isValidTextInput(this.description)) {
-      this.descriptionError = `Description is required`;
-      result = false;
-    }
-
-    return result;
-  } */
-
-  validate() {
-    const fields = [
-      {
-        fieldName: 'title',
-        isFieldValid: this.isValidTextInput,
-        errorMessage: `Title is required`,
-      },
-      {
-        fieldName: 'artistName',
-        isFieldValid: this.isValidTextInput,
-        errorMessage: `Artist name is required`,
-      },
-      {
-        fieldName: 'artForm',
-        isFieldValid: this.isValidTextInput,
-        errorMessage: `Art form is required`,
-      },
-      {
-        fieldName: 'description',
-        isFieldValid: this.isValidTextInput,
-        errorMessage: `Description is required`,
-      },
-    ];
-
-    const isFormValid = fields.reduce((acc, currentField) => {
-      const fieldName = currentField.fieldName;
-      /* if (!this.hasOwnProperty(fieldName))
-        throw Error(`Field ${fieldName} does not exist`); */
-      const errorFieldName = `${fieldName}Error`;
-
-      if (currentField.isFieldValid(this[fieldName])) {
-        this[errorFieldName] = '';
+      if (currentField.isFieldValid) {
+        currentField.userFeedbackCallback('');
         return acc;
       } else {
-        this[errorFieldName] = currentField.errorMessage;
+        currentField.userFeedbackCallback(currentField.errorMessage);
         return false;
       }
     }, true);
+  }
 
-    return isFormValid;
+  validate() {
+    const textItem = (inputValue, errorMessage, userFeedbackCallback) => {
+      return {
+        isFieldValid: this.isValidTextInput(inputValue),
+        errorMessage,
+        userFeedbackCallback,
+      };
+    };
+
+    const fields = [
+      textItem(this.title, `Title is required`, (m) => (this.titleError = m)),
+      textItem(
+        this.artistName,
+        `Artist name is required`,
+        (m) => (this.artistNameError = m)
+      ),
+      textItem(
+        this.artForm,
+        `Art form is required`,
+        (m) => (this.artFormError = m)
+      ),
+      textItem(
+        this.description,
+        `Description is required`,
+        (m) => (this.descriptionError = m)
+      ),
+      {
+        isFieldValid: this.preview,
+        errorMessage: `Please upload a valid image`,
+        userFeedbackCallback: (m) => (this.dropzoneError = m),
+      },
+    ];
+
+    return this.isFormValid(fields);
+  }
+
+  async uploadArtImage() {
+    try {
+      const response = await this.artImage.upload('/files');
+      return await response.json();
+    } catch (error) {
+      this.statusMessage = `File upload failed: ${error.message}`;
+    }
+  }
+
+  async createArtist() {
+    const artist = this.store.createRecord('artist', {
+      name: this.artistName.trim(),
+    });
+    await artist.save();
+    return artist;
+  }
+
+  async createArtwork(artImageLocation, artist) {
+    const artwork = this.store.createRecord('artwork', {
+      title: this.title.trim(),
+      artForm: this.artForm.trim(),
+      description: this.description.trim(),
+      imageUrl: `${artImageLocation}/download`,
+      artist: artist,
+    });
+    await artwork.save();
+    return artwork;
   }
 
   @action
-  async createArtwork(event) {
+  async handleCreateArtwork(event) {
     event.preventDefault();
     this.clearErrors();
 
-    if (!this.validate()) {
-      return;
-    }
+    if (!this.validate()) return;
 
-    const artist = this.store.createRecord('artist', {
-      name: this.artistName,
-    });
-    await artist.save();
-
-    const artwork = this.store.createRecord('artwork', {
-      title: this.title,
-      artForm: this.artForm,
-      description: this.description,
-      artist: artist,
-    });
-    artwork.save();
+    const artImageResponse = await this.uploadArtImage();
+    const artist = await this.createArtist();
+    this.createArtwork(artImageResponse.links.self, artist);
 
     this.clearInputFields();
-    //this.statusMessage = `Creation successful`;
+    this.statusMessage = `Creation successful`; // TODO turn into pop-up notification
     this.router.transitionTo('index');
+  }
+
+  get queue() {
+    return this.fileQueue.findOrCreate('artImages');
+  }
+
+  @action
+  async setArtImage(file) {
+    this.preview = await file.readAsDataURL();
+    this.artImage = file;
+    // Remove previous item from queue
+    this.queue.files
+      .slice(0, -1)
+      .forEach((fileItem) => this.queue.remove(fileItem));
+  }
+
+  @action
+  validateFile(file) {
+    return allowedTypes.includes(file.type);
   }
 }
