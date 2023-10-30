@@ -571,3 +571,7 @@ input[type="file"] {
   max-height: 100%;
   page-break-before: always; /* CSS 2.1 syntax */
 }
+
+.dropzone span {
+  color: red;
+}
