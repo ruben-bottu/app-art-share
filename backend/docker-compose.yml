@@ -35,6 +35,6 @@ services:
       - ./data/files:/share
   # Authentication
   registration:
-    image: semtech/mu-registration-service:2.6.0
+    image: semtech/mu-registration-service:2.7.3
     links:
       - database:database

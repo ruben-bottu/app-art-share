@@ -186,7 +186,7 @@ p {
 
 .results li {
   list-style: none;
-  padding: 10px 15px;
+  margin: 20px 0;
 }
 
 .menu .results li:hover {

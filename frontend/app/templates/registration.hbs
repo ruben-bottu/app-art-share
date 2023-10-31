@@ -1,0 +1,44 @@
+<div class="feedback-message">
+  {{#if this.loading}}
+    <span class="loading">Registering...</span>
+  {{/if}}
+  {{#if this.statusMessage}}
+    <span class="status-bar">{{this.statusMessage}}</span>
+  {{/if}}
+</div>
+<form {{on "submit" this.register}}>
+  <div class="rentals">
+    <label for="register-name">Name</label>
+    <Input @value={{this.name}} placeholder="John Doe" id="register-name" />
+    {{#if this.nameError}}
+      <span>{{this.nameError}}</span>
+    {{/if}}
+  </div>
+  <div class="rentals">
+    <label for="register-username">Username</label>
+    <Input
+      @value={{this.nickname}}
+      placeholder="john.doe"
+      id="register-username"
+    />
+    {{#if this.nicknameError}}
+      <span>{{this.nicknameError}}</span>
+    {{/if}}
+  </div>
+  <div class="rentals">
+    <label for="register-password">Password</label>
+    <Input @value={{this.password}} @type="password" id="register-password" />
+    {{#if this.passwordError}}
+      <span>{{this.passwordError}}</span>
+    {{/if}}
+  </div>
+  <div class="rentals">
+    <label for="register-confirm-password">Confirm password</label>
+    <Input
+      @value={{this.passwordConfirmation}}
+      @type="password"
+      id="register-confirm-password"
+    />
+  </div>
+  <button type="submit" class="button">Register</button>
+</form>
