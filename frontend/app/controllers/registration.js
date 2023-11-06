@@ -42,7 +42,6 @@ export default class RegistrationController extends Controller {
     this.clearErrors();
 
     // TODO add validation
-
     const account = await this.registerAccount();
     this.clearInputFields();
     this.statusMessage = `Creation successful`;

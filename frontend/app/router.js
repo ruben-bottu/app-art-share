@@ -11,4 +11,5 @@ Router.map(function () {
     this.route('new');
   });
   this.route('registration', { path: '/register' });
+  this.route('profile');
 });

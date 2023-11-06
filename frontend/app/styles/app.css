@@ -44,6 +44,11 @@ p {
   margin-bottom: 15px;
 }
 
+.form-title {
+  font-size: 2em;
+  margin-bottom: -25px;
+}
+
 /**
  * Button
  */
@@ -198,7 +203,7 @@ p {
  */
 
 .body {
-  padding: 15px;
+  padding: 25px;
 }
 
 /**
