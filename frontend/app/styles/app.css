@@ -72,10 +72,16 @@ p {
   font-weight: bold;
   opacity: 0.9;
   display: inline-block;
+  cursor: pointer;
 }
 
 .button:hover {
   opacity: 1;
+}
+
+.unregister-button {
+  background: red;
+  margin-bottom: 20px;
 }
 
 /**

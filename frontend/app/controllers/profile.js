@@ -63,4 +63,15 @@ export default class ProfileController extends Controller {
     this.clearInputFields();
     this.statusMessage = `Password changed succesfully`;
   }
+
+  @action
+  async unregister() {
+    await fetch('/accounts/current', {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+      },
+    });
+  }
 }

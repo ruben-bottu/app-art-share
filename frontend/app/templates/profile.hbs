@@ -2,6 +2,11 @@
   <section class="status-bar"><span>{{this.statusMessage}}</span></section>
 {{/if}}
 
+<button
+  {{on "click" this.unregister}}
+  class="button unregister-button"
+>Unregister</button>
+
 <h2 class="form-title">Change Your Password</h2>
 
 <form {{on "submit" this.changePassword}}>
