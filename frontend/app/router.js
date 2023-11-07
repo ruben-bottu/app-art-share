@@ -12,4 +12,5 @@ Router.map(function () {
   });
   this.route('registration', { path: '/register' });
   this.route('profile');
+  this.route('login');
 });

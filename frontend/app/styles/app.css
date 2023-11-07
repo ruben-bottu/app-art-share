@@ -49,6 +49,14 @@ p {
   margin-bottom: -25px;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.hide {
+  visibility: hidden;
+}
+
 /**
  * Button
  */

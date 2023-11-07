@@ -1,4 +1,4 @@
-import Model from '@ember-data/model';
+import Model, { attr } from '@ember-data/model';
 
 export default class AccountCurrentChangePasswordModel extends Model {
   @attr('string') oldPassword;

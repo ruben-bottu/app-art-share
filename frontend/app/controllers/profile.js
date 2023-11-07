@@ -23,11 +23,33 @@ export default class ProfileController extends Controller {
     this.newPasswordConfirmation = '';
   }
 
+  // TODO use Ember Data
   async updatePassword() {
-    return this.store.createRecord('accountCurrentChangePassword', {
+    /* return this.store.updateRecord('account.current.changePassword', {
       oldPassword: this.oldPassword.trim(),
       newPassword: this.newPassword.trim(),
       newPasswordConfirmation: this.newPasswordConfirmation.trim(),
+    }); */
+
+    const body = {
+      data: {
+        type: 'accounts',
+        id: 'current',
+        attributes: {
+          'old-password': this.oldPassword.trim(),
+          'new-password': this.newPassword.trim(),
+          'new-password-confirmation': this.newPasswordConfirmation.trim(),
+        },
+      },
+    };
+
+    return fetch('/accounts/current/changePassword', {
+      method: 'PATCH',
+      headers: {
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+      },
+      body: JSON.stringify(body),
     });
   }
 

@@ -6,14 +6,24 @@
     <LinkTo @route="index" class="menu-contact">
       Overview
     </LinkTo>
-    <LinkTo @route="artworks.new" class="menu-about">
-      Create
-    </LinkTo>
-    <LinkTo @route="registration" class="menu-about">
-      Register
-    </LinkTo>
-    <LinkTo @route="profile" class="menu-about">
-      Profile
-    </LinkTo>
+    {{#if this.session.isAuthenticated}}
+      <LinkTo @route="artworks.new" class="menu-about">
+        Create
+      </LinkTo>
+      <LinkTo @route="profile" class="menu-about">
+        Profile
+      </LinkTo>
+      <a
+        {{on "click" this.invalidateSession}}
+        class="menu-about cursor-pointer"
+      >Logout</a>
+    {{else}}
+      <LinkTo @route="registration" class="menu-about">
+        Register
+      </LinkTo>
+      <LinkTo @route="login" class="menu-about">
+        Login
+      </LinkTo>
+    {{/if}}
   </div>
 </nav>
