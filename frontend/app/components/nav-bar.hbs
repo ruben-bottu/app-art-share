@@ -7,10 +7,10 @@
       Overview
     </LinkTo>
     {{#if this.session.isAuthenticated}}
-      <LinkTo @route="artworks.new" class="menu-about">
+      <LinkTo @route="authenticated.artworks.new" class="menu-about">
         Create
       </LinkTo>
-      <LinkTo @route="profile" class="menu-about">
+      <LinkTo @route="authenticated.profile" class="menu-about">
         Profile
       </LinkTo>
       <a
