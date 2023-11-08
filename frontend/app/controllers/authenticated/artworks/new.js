@@ -14,7 +14,6 @@ export default class ArtworksNewController extends Controller {
   @tracked artImage = '';
   @tracked preview = '';
 
-  @tracked statusMessage = '';
   @tracked titleError = '';
   @tracked artistNameError = '';
   @tracked artFormError = '';
@@ -24,9 +23,9 @@ export default class ArtworksNewController extends Controller {
   @service store;
   @service router;
   @service fileQueue;
+  @service notify;
 
   clearErrors() {
-    this.statusMessage = '';
     /* this.titleError = '';
     this.artistNameError = '';
     this.artFormError = '';
@@ -103,7 +102,7 @@ export default class ArtworksNewController extends Controller {
       const response = await this.artImage.upload('/files');
       return await response.json();
     } catch (error) {
-      this.statusMessage = `File upload failed: ${error.message}`;
+      this.notify.error(`File upload failed: ${error.message}`);
     }
   }
 
@@ -139,7 +138,7 @@ export default class ArtworksNewController extends Controller {
     this.createArtwork(artImageResponse.links.self, artist);
 
     this.clearInputFields();
-    this.statusMessage = `Creation successful`; // TODO turn into pop-up notification
+    this.notify.success(`Creation successful`);
     this.router.transitionTo('index');
   }
 

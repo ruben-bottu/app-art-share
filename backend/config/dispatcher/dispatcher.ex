@@ -52,7 +52,7 @@ defmodule Dispatcher do
   end
 
   match "/sessions/*path" do
-    Proxy.forward conn, path, "http://login/sessions/"
+    Proxy.forward(conn, path, "http://login/sessions/")
   end
 
   match "/*_", %{layer: :not_found} do

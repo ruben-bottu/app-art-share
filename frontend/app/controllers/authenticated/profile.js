@@ -8,14 +8,10 @@ export default class ProfileController extends Controller {
   @tracked newPassword = '';
   @tracked newPasswordConfirmation = '';
 
-  @tracked statusMessage = '';
-
   @service store;
   @service router;
-
-  clearErrors() {
-    this.statusMessage = '';
-  }
+  @service notify;
+  @service session;
 
   clearInputFields() {
     this.oldPassword = '';
@@ -23,14 +19,14 @@ export default class ProfileController extends Controller {
     this.newPasswordConfirmation = '';
   }
 
-  // TODO use Ember Data
-  async updatePassword() {
-    /* return this.store.updateRecord('account.current.changePassword', {
-      oldPassword: this.oldPassword.trim(),
-      newPassword: this.newPassword.trim(),
-      newPasswordConfirmation: this.newPasswordConfirmation.trim(),
-    }); */
+  jsonApiHeaders() {
+    return {
+      Accept: 'application/vnd.api+json',
+      'Content-Type': 'application/vnd.api+json',
+    };
+  }
 
+  async updatePassword() {
     const body = {
       data: {
         type: 'accounts',
@@ -45,10 +41,7 @@ export default class ProfileController extends Controller {
 
     return fetch('/accounts/current/changePassword', {
       method: 'PATCH',
-      headers: {
-        Accept: 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json',
-      },
+      headers: this.jsonApiHeaders(),
       body: JSON.stringify(body),
     });
   }
@@ -56,22 +49,19 @@ export default class ProfileController extends Controller {
   @action
   async changePassword(event) {
     event.preventDefault();
-    this.clearErrors();
 
     // TODO add validation
     await this.updatePassword();
     this.clearInputFields();
-    this.statusMessage = `Password changed succesfully`;
+    this.notify.success(`Password changed succesfully`);
   }
 
   @action
   async unregister() {
+    this.session.invalidate();
     await fetch('/accounts/current', {
       method: 'DELETE',
-      headers: {
-        Accept: 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json',
-      },
+      headers: this.jsonApiHeaders(),
     });
   }
 }

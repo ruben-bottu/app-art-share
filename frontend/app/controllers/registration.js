@@ -9,14 +9,9 @@ export default class RegistrationController extends Controller {
   @tracked password = '';
   @tracked passwordConfirmation = '';
 
-  @tracked statusMessage = '';
-
   @service store;
   @service router;
-
-  clearErrors() {
-    this.statusMessage = '';
-  }
+  @service notify;
 
   clearInputFields() {
     this.name = '';
@@ -39,12 +34,11 @@ export default class RegistrationController extends Controller {
   @action
   async register(event) {
     event.preventDefault();
-    this.clearErrors();
 
     // TODO add validation
     const account = await this.registerAccount();
     this.clearInputFields();
-    this.statusMessage = `Creation successful`;
-    this.router.transitionTo('index');
+    this.notify.success(`Registration successful`);
+    this.router.transitionTo('login');
   }
 }

@@ -57,6 +57,16 @@ p {
   visibility: hidden;
 }
 
+.success {
+  background: #00e600;
+  border-radius: 5px;
+}
+
+.error {
+  background: red;
+  border-radius: 5px;
+}
+
 /**
  * Button
  */
@@ -120,7 +130,7 @@ p {
 .menu a {
   text-decoration: none;
   padding: 0 15px;
-  color: #fff;
+  color: #fcebe9;
   font-size: 20px;
   font-weight: bold;
 }
@@ -137,6 +147,10 @@ p {
 .menu .links a {
   position: relative;
   bottom: 5px;
+}
+
+.menu .active {
+  color: #fff;
 }
 
 .rentals {
