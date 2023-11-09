@@ -46,7 +46,7 @@ p {
 
 .form-title {
   font-size: 2em;
-  margin-bottom: -25px;
+  margin-bottom: 15px;
 }
 
 .cursor-pointer {
@@ -58,13 +58,17 @@ p {
 }
 
 .success {
-  background: #00e600;
+  background: #80ffaa;
   border-radius: 5px;
 }
 
 .error {
-  background: red;
+  background: #ff704d;
   border-radius: 5px;
+}
+
+.no-items {
+  margin-top: 20px;
 }
 
 /**
@@ -178,6 +182,10 @@ p {
 
 .rentals span {
   color: red;
+}
+
+.rentals:first-child label {
+  margin-top: 0;
 }
 
 .menu input:focus {
@@ -511,39 +519,6 @@ p {
   border: 0;
 }
 
-/* form {
-  display: grid;
-  grid-template-columns: 1fr 6em;
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  grid-column: span 2;
-} */
-
-/* form > label {
-  grid-area: 1 / 1 / 2 / 2;
-} */
-
-form > input {
-  padding: 0.5em;
-  border-top-left-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
-  border: 1px solid #ccc;
-  border-right: none;
-  font-size: 1em;
-
-  /* grid-area: 2 / 1 / 3 / 2; */
-}
-
-form > button {
-  border-top-right-radius: 0.5em;
-  border-bottom-right-radius: 0.5em;
-  border: 1px solid #ccc;
-  font-size: 1em;
-
-  /* grid-area: 2 / 2 / 3 / 3; */
-}
-
 input[type="file"] {
   display: none;
 }
@@ -556,7 +531,9 @@ input[type="file"] {
 }
 
 .status-bar {
-  font-size: 140%;
+  padding: 11px;
+  margin-bottom: 15px;
+  font-size: 120%;
   text-align: center;
   border-radius: 5px;
   color: #fff;

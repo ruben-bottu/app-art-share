@@ -33,7 +33,6 @@ services:
       - database:database
     volumes:
       - ./data/files:/share
-  # Authentication
   registration:
     image: semtech/mu-registration-service:2.7.3
     links:
@@ -42,3 +41,11 @@ services:
     image: semtech/mu-login-service:2.8.0
     links:
       - database:database
+  recommendation:
+    image: semtech/mu-javascript-template
+    environment:
+      NODE_ENV: "development"
+    ports:
+      - 8888:80
+    volumes:
+      - ./recommendation:/app/
