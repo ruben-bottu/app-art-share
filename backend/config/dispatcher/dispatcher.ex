@@ -56,7 +56,7 @@ defmodule Dispatcher do
   end
 
   match "/recommendations/*path" do
-    Proxy.forward(conn, path, "http://recommendation/artworks/")
+    Proxy.forward(conn, path, "http://recommendation/")
   end
 
   match "/*_", %{layer: :not_found} do

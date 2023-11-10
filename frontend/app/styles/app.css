@@ -222,7 +222,7 @@ p {
 }
 
 .results {
-  margin-top: -10px;
+  margin-top: 25px;
 }
 
 .results li {
@@ -247,6 +247,7 @@ p {
  */
 
 .jumbo {
+  margin-bottom: 15px;
   padding: 50px;
   background: #f6f6f6;
 }
@@ -277,7 +278,7 @@ p {
  */
 
 .rental {
-  margin-top: 15px;
+  margin-bottom: 15px;
   background-color: #f6f6f6;
   padding: 20px 25px;
   display: flex;
@@ -584,4 +585,12 @@ input[type="file"] {
 
 .dropzone span {
   color: red;
+}
+
+.recommended {
+  background-color: #c2f0c9;
+}
+
+.recommended:hover {
+  background-color: #a5f3b5;
 }

@@ -1,3 +1,10 @@
 <Jumbo />
 
-<ArtworkOverview @artworks={{@model}} />
+<h2>Recommended For You:</h2>
+<Artwork
+  @artwork={{@model.recommendedArtwork}}
+  @artist={{@model.recommendedArtwork.artist}}
+  class="recommended"
+/>
+
+<ArtworkOverview @artworks={{@model.artworks}} />
