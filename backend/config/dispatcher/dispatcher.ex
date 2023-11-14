@@ -46,16 +46,15 @@ defmodule Dispatcher do
     Proxy.forward(conn, path, "http://resource/files/")
   end
 
-  # Authentication
   match "/accounts/*path", %{accept: [:json], layer: :services} do
     Proxy.forward(conn, path, "http://registration/accounts/")
   end
 
-  match "/sessions/*path" do
+  match "/sessions/*path", %{accept: [:json], layer: :services} do
     Proxy.forward(conn, path, "http://login/sessions/")
   end
 
-  match "/recommendations/*path" do
+  match "/recommendations/*path", %{layer: :services} do
     Proxy.forward(conn, path, "http://recommendation/")
   end
 

@@ -1,9 +1,9 @@
-version: '3.4'
+version: "3.4"
 
 services:
-  identifier:
-    ports:
-      - "80:80"
-  database:
-    ports:
-      - "8890:8890"
+    identifier:
+        ports:
+            - "80:80"
+    triplestore:
+        ports:
+            - "8890:8890"

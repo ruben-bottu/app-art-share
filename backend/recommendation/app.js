@@ -27,9 +27,9 @@ app.get("/", async (req, res, next) => {
 
     const dbResponse = await executeQuery(getAllArtworksQuery, next);
     const artworks = dbResponse.results.bindings;
-    const { artworkId } = randomItem(artworks);
+    const artworkId = artworks.length ? randomItem(artworks).artworkId : "";
 
-    res.send({ artworkId: artworkId.value });
+    res.send({ artworkId });
 });
 
 app.use(errorHandler);

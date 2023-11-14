@@ -18,7 +18,9 @@ export default class IndexRoute extends Route {
 
     async model() {
         const id = await this.recommendedArtworkId();
-        const recommendedArtwork = await this.store.findRecord('artwork', id);
+        const recommendedArtwork = id
+            ? await this.store.findRecord('artwork', id)
+            : null;
 
         const artworks = await this.store.query('artwork', {
             include: 'artist',
