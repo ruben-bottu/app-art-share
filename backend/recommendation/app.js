@@ -27,7 +27,9 @@ app.get("/", async (req, res, next) => {
 
     const dbResponse = await executeQuery(getAllArtworksQuery, next);
     const artworks = dbResponse.results.bindings;
-    const artworkId = artworks.length ? randomItem(artworks).artworkId : "";
+    const artworkId = artworks.length
+        ? randomItem(artworks).artworkId.value
+        : "";
 
     res.send({ artworkId });
 });
