@@ -13,21 +13,21 @@ INSERT DATA {
             schema:name "Anna Boch".
 
         <http://mu.semte.ch/services/file-service/files/inJuniImage>
-            a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>;
-            <http://purl.org/dc/terms/created> "2023-11-14T11:14:55Z";
+            a nfo:FileDataObject;
+            dct:created "2023-11-14T11:14:55Z";
             mu:uuid "inJuniImage";
-            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "inJuniImage.jpg";
-            <http://purl.org/dc/terms/format> "image/jpeg; charset=binary";
-            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileSize> 166360;
-            <http://dbpedia.org/ontology/fileExtension> "jpg".
+            nfo:fileName "inJuniImage.jpg";
+            dct:format "image/jpeg; charset=binary";
+            nfo:fileSize 166360;
+            db:fileExtension "jpg".
 
         <share://inJuniImage.jpg>
-            a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>;
-            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "inJuniImage.jpg";
-            <http://purl.org/dc/terms/format> "image/jpeg; charset=binary";
-            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileSize> 166360;
-            <http://dbpedia.org/ontology/fileExtension> "jpg";
-            <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource> <http://mu.semte.ch/services/file-service/files/inJuniImage>.
+            a nfo:FileDataObject;
+            nfo:fileName "inJuniImage.jpg";
+            dct:format "image/jpeg; charset=binary";
+            nfo:fileSize 166360;
+            db:fileExtension "jpg";
+            nie:dataSource <http://mu.semte.ch/services/file-service/files/inJuniImage>.
 
         <https://github.com/ruben-bottu/artwork-service/artworks/inJuniId>
             a schema:VisualArtwork;
