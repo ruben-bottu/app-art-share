@@ -1,1 +1,41 @@
+PREFIX schema: <http://schema.org/>
+PREFIX mu:     <http://mu.semte.ch/vocabularies/core/>
+PREFIX nfo:    <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+PREFIX nie:    <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+PREFIX dct:    <http://purl.org/dc/terms/>
+PREFIX db:     <http://dbpedia.org/ontology/>
 
+INSERT DATA {
+    GRAPH <http://mu.semte.ch/application> {
+        <https://github.com/ruben-bottu/artist-service/artists/annaBochId>
+            a schema:artist;
+            mu:uuid "annaBochId";
+            schema:name "Anna Boch".
+
+        <http://mu.semte.ch/services/file-service/files/inJuniImage>
+            a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>;
+            <http://purl.org/dc/terms/created> "2023-11-14T11:14:55Z";
+            mu:uuid "inJuniImage";
+            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "inJuniImage.jpg";
+            <http://purl.org/dc/terms/format> "image/jpeg; charset=binary";
+            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileSize> 166360;
+            <http://dbpedia.org/ontology/fileExtension> "jpg".
+
+        <share://inJuniImage.jpg>
+            a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>;
+            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> "inJuniImage.jpg";
+            <http://purl.org/dc/terms/format> "image/jpeg; charset=binary";
+            <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileSize> 166360;
+            <http://dbpedia.org/ontology/fileExtension> "jpg";
+            <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource> <http://mu.semte.ch/services/file-service/files/inJuniImage>.
+
+        <https://github.com/ruben-bottu/artwork-service/artworks/inJuniId>
+            a schema:VisualArtwork;
+            mu:uuid "inJuniId";
+            schema:headline "In juni";
+            schema:artform "Painting";
+            schema:abstract "An impressionist self-portrait of Anna Boch in her garden";
+            schema:image "/files/inJuniImage/download";
+            schema:artist <https://github.com/ruben-bottu/artist-service/artists/annaBochId>.
+    }
+}
