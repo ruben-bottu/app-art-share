@@ -7,6 +7,7 @@
 !/data/db/toLoad
 !/data/db/toLoad/*
 /data/files/*
+!/data/files/inJuniImage.jpg
 .DS_Store
 *~
 
