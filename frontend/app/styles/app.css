@@ -62,12 +62,12 @@ form {
 }
 
 .success {
-  background: #80ffaa;
+  background-color: #80ffaa;
   border-radius: 5px;
 }
 
 .error {
-  background: #ff704d;
+  background-color: red;
   border-radius: 5px;
 }
 
