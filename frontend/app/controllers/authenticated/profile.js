@@ -3,6 +3,8 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
+import { handleResponseErrors } from '../../my-utils/utils';
+
 export default class ProfileController extends Controller {
     @tracked oldPassword = '';
     @tracked newPassword = '';
@@ -45,17 +47,14 @@ export default class ProfileController extends Controller {
             headers: this.jsonApiHeaders(),
             body: JSON.stringify(body),
         });
+
         if (response.ok) {
             this.notify.success(`Password changed succesfully`);
         } else {
             const error = await response.json();
-            if (error.errors && error.errors.length && error.errors[0].title) {
-                this.notify.error(error.errors[0].title);
-            } else {
-                if (error.status == 403) {
-                    this.notify.error(this.forbiddenMessage);
-                } else this.notify.error(this.failureMessage);
-            }
+            handleResponseErrors(error, (message) =>
+                this.notify.error(message)
+            );
         }
     }
 

@@ -66,6 +66,7 @@ services:
     registration:
         image: semtech/mu-registration-service:2.7.3
         environment:
+            # needs to write to correct graph
             USERS_GRAPH: "http://mu.semte.ch/graphs/public"
             SESSIONS_GRAPH: "http://mu.semte.ch/graphs/public"
         restart: always
@@ -73,7 +74,11 @@ services:
         labels:
             - "logging=true"
     login:
-        image: semtech/mu-login-service:2.8.0
+        image: semtech/mu-login-service:2.9.1
+        environment:
+            # needs to write to correct graph
+            USERS_GRAPH: "http://mu.semte.ch/graphs/public"
+            SESSIONS_GRAPH: "http://mu.semte.ch/graphs/public"
         restart: always
         logging: *default-logging
         labels:

@@ -3,6 +3,8 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
+import { handleResponseErrors } from '../my-utils/utils';
+
 export default class RegistrationController extends Controller {
     @tracked name = '';
     @tracked nickname = '';
@@ -27,8 +29,17 @@ export default class RegistrationController extends Controller {
             password: this.password.trim(),
             passwordConfirmation: this.passwordConfirmation.trim(),
         });
-        await account.save();
-        return account;
+
+        try {
+            await account.save();
+            this.notify.success(`Registration successful`);
+            this.router.transitionTo('login');
+            return account;
+        } catch (error) {
+            handleResponseErrors(error, (message) =>
+                this.notify.error(message)
+            );
+        }
     }
 
     @action
@@ -38,7 +49,5 @@ export default class RegistrationController extends Controller {
         // TODO add validation
         const account = await this.registerAccount();
         this.clearInputFields();
-        this.notify.success(`Registration successful`);
-        this.router.transitionTo('login');
     }
 }
