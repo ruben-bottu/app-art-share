@@ -23,7 +23,7 @@ eds --proxy http://host
 
 ## Checkbox
 
-A checkbox the trainer project:
+The mu-semtech trainer project checkbox:
 
 -   [x] has an app-art-share mu-project
 -   [x] has a frontend-art-share frontend in EmberJS
